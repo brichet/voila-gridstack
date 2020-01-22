@@ -5,6 +5,11 @@
 A gridstack-based template for [voila](https://github.com/QuantStack/voila/).
 
 ## Installation
+This version of `voila-gridstack` has to be installed in local
+```bash
+python -m pip install . -vv
+```
+
 
 `voila-gridstack` can be installed with the conda package manager
 

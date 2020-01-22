@@ -6,8 +6,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.all.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.jQueryUI.min.js"></script>
+<script src="http://gridstackjs.com/dist/gridstack.js"></script>
+<script src="http://gridstackjs.com/dist/gridstack.jQueryUI.js"></script>
 <script type="text/javascript">
     // bqplot doesn't resize when resizing the tile, fix: fake a resize event
     var resize_workaround = _.debounce(() => {
@@ -16,13 +16,8 @@
     $(function () {
         $('.grid-stack').gridstack({
             width: 12,
-            alwaysShowResizeHandle: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
-            resizable: {
-                handles: 'e, se, s, sw, w'
-            },
-            draggable: {
-                handle: '.gridhandle',
-            }
+            disableDrag: true,
+            disableResize: true
         }).on('resizestop', function(event, elem) {
             resize_workaround()
         });
@@ -46,7 +41,7 @@
     </style>
 {% endfor %}
 
-<link href="https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.min.css rel="stylesheet">
+<link href="http://gridstackjs.com/dist/gridstack.css" rel="stylesheet">
 
 {{ super() }}
 
@@ -74,7 +69,8 @@
 }
 
 .voila-gridstack {
-    background: var(--jp-layout-color3);
+    background: white;
+    # background: var(--jp-layout-color3);
     color: var(--jp-ui-font-color0);
 }
 
@@ -94,13 +90,12 @@ body {
 {% endif %}
 <section id="demo" class="voila-gridstack">
     <div class="container">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>>Dashboard composer</h2>
+                <h2>Dashboard composer</h2>
                 <hr class="star-light">
-                <input type="button" value="reload layout" onclick="load_layout();" />
             </div>
-        </div>
+        </div> -->
 
         <div class="grid-stack" data-gs-width="12" data-gs-animate="yes">
                 {{ super() }}
@@ -127,9 +122,6 @@ body {
 <div class="grid-stack-item" data-gs-width="12" data-gs-height="2" data-gs-auto-position="false">
 {% endif %}
     <div class="grid-stack-item-content">
-        <div class="gridhandle">
-            <i class=" fa fa-arrows"></i>
-        </div>
         {{ super() }}
     </div>
 </div>
@@ -148,9 +140,6 @@ body {
 <div class="grid-stack-item" data-gs-width="4" data-gs-height="4" data-gs-auto-position="false">
 {% endif %}
     <div class="grid-stack-item-content">
-        <div class="gridhandle">
-            <i class=" fa fa-arrows"></i>
-        </div>
         {{ super() }}
     </div>
 </div>
@@ -158,12 +147,4 @@ body {
 
 {% block footer_js %}
 {{ super() }}
-<script>
-requirejs(
-    [
-        "static/main-grid",
-    ]
-)
-</script>
-<!--<script type="text/javascript">console.log({{ resources.base_url }}); </script>-->
 {% endblock footer_js %}
