@@ -15,7 +15,7 @@
     </style>
 {% endfor %}
 
-<link href="https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/gridstack@0.6.0/dist/gridstack.min.css" rel="stylesheet" />
 
 {{ super() }}
 
