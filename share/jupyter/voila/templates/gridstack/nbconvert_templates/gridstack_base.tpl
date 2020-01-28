@@ -60,3 +60,20 @@ a.anchor-link {
 <body class="theme-light" data-base-url="{{resources.base_url}}voila/">
 {% endif %}
 {% endblock body_header %}
+
+{% block footer_js %}
+{{ super() }}
+<script>
+requirejs.config({
+    paths: {
+        'gridstack_url': '../gridstack',
+    }
+});
+console.log(requirejs.s.contexts._.config);
+requirejs(
+    [
+        "gridstack_url/static/save_grid",
+    ]
+);
+</script>
+{% endblock footer_js %}
