@@ -5,9 +5,8 @@
 *                                                                          *
 * The full license is in the file LICENSE, distributed with this software. *
 ****************************************************************************/
-require([], function(gridstack) {
+require([], function() {
     $( document ).ready(function() {
-        alert("Script loaded");
         $( '.grid-stack' ).on('change', function (event, items) {
             modified_items = {};
             for (var i = 0; i < items.length; i++){
@@ -18,23 +17,17 @@ require([], function(gridstack) {
     //                                          };
                 console.log(items[i]);
             }
-    //        var xhttp = new XMLHttpRequest();
-    //        xhttp.open("POST", "/gridstack");
-    //        xhttp.setRequestHeader("Content-Type", "application/json");
-    //
-    //        xhttp.onreadystatechange = function(){
-    //            if (this.readyState == 4 && this.status == 200){
-    //                content = JSON.parse(this.responseText);
-    //                console.log("$$$$$$$$$$$$$$");
-    //                console.log(content);
-    //                console.log("$$$$$$$$$$$$$$");
-    //            }
-    //        };
-    //        xhttp.send(JSON.stringify(modified_items));
+//            Jupyter.notebook.save_notebook();
         });
 
     //    $( '.grid-stack' ).trigger("change", [$('.grid-stack').data('gridstack').grid.nodes]);
     });
-});
 
-alert("passed");
+    function guid() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    }
+//    console.log(Jupyter.notebook)
+});

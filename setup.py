@@ -14,7 +14,10 @@ def get_data_files():
         ('etc/jupyter/jupyter_server_config.d', ['etc/jupyter/jupyter_server_config.d/voila-gridstack.json']),
         ('etc/jupyter/jupyter_notebook_config.d', ['etc/jupyter/jupyter_notebook_config.d/voila-gridstack.json']),
         ('etc/jupyter/nbconfig/notebook.d', ['etc/jupyter/nbconfig/notebook.d/voila-gridstack.json']),
-        ('share/jupyter/nbextensions/voila-gridstack', ['voila-gridstack/static/extension.js'])
+        ('share/jupyter/nbextensions/voila-gridstack', ['voila-gridstack/static/extension.js',
+                                                        'voila-gridstack/static/voila-gridstack.css',
+                                                        'voila-gridstack/static/gridstack.js',
+                                                        'voila-gridstack/static/gridstack.jqueryUI.js'])
     ]
     # Add all the templates
     for root, dirs, files in os.walk('share'):

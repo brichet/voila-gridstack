@@ -64,16 +64,22 @@ a.anchor-link {
 {% block footer_js %}
 {{ super() }}
 <script>
-requirejs.config({
-    paths: {
-        'gridstack_url': '../gridstack',
-    }
+{% if resources.gridstack.extension %}
+requirejs.config({ baseUrl: '{{resources.base_url}}voila/', waitSeconds: 30,
+                   paths: { gridstack: '../gridstack',
+                          },
 });
-console.log(requirejs.s.contexts._.config);
 requirejs(
     [
-        "gridstack_url/static/save_grid",
+        "gridstack/static/save_grid",
     ]
 );
+{% else %}
+requirejs(
+    [
+        "static/save_grid",
+    ]
+);
+{% endif %}
 </script>
 {% endblock footer_js %}
