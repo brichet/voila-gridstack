@@ -17,7 +17,7 @@ def get_data_files():
         ('share/jupyter/nbextensions/voila-gridstack', ['voila-gridstack/static/extension.js',
                                                         'voila-gridstack/static/voila-gridstack.css',
                                                         'voila-gridstack/static/gridstack.js',
-                                                        'voila-gridstack/static/gridstack.jqueryUI.js'])
+                                                        'voila-gridstack/static/gridstack.jqueryUI_require.js'])
     ]
     # Add all the templates
     for root, dirs, files in os.walk('share'):

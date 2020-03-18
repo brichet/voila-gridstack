@@ -11,7 +11,7 @@
 define(['jquery',
         'base/js/namespace',
         'nbextensions/voila-gridstack/gridstack',
-        'nbextensions/voila-gridstack/gridstack.jqueryUI'
+        'nbextensions/voila-gridstack/gridstack.jqueryUI_require'
        ],
        function($, Jupyter, gridstack, _) {
 
@@ -33,6 +33,7 @@ define(['jquery',
         }
 
         var open_voila_gridstack = function() {
+            Jupyter.notebook.execute_all_cells();
             Jupyter.notebook.save_notebook().then(function () {
 //                head = document.head || document.getElementsByTagName('head')[0];
 //                var scr  = document.createElement('script');
@@ -42,13 +43,13 @@ define(['jquery',
 //                scr  = document.createElement('script');
 //                scr.src = 'https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.jQueryUI.min.js';
 //                head.insertBefore(scr, head.firstChild);
-
-                $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', 'https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.min.css') );
+//                $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', 'https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.min.css') );
 //                $('head').append( $('<script id=script_gridstack />').attr('src', 'https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.all.js') );
 //                $('head').append( $('<script id=script_gridstack_jqueryUI />').attr('src', 'https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.jQueryUI.min.js') );
 
                 $('#notebook-container').css('width', '100%');
                 $('.code_cell > .input').hide();
+                $('.prompt').hide();
 //                {% set cell_jupyter_dashboards = cell.metadata.get('extensions', {}).get('jupyter_dashboards', {}) %}
 //                {% set view_data = cell_jupyter_dashboards.get('views', {}).get(active_view, {}) %}
 //                {% set hidden = view_data.get('hidden') %}
@@ -62,47 +63,47 @@ define(['jquery',
                         <i class=" fa fa-arrows"></i>
                     </div>
                 `)
-                $('.grid-stack-item-content').wrap("<div class='grid-stack-item' data-gs-auto-position=true></div>");
+                $('.grid-stack-item-content').wrap("<div class='grid-stack-item' data-gs-autoPosition=true></div>");
 //                    $('.grid-stack-item').wrap("<div class='grid-stack'></div>");
                 $('#notebook-container').addClass('grid-stack');
                 $('.grid-stack-item-content').css({"background": "var(--jp-layout-color0)",
                                                    "color": "var(--jp-ui-font-color1)",
                                                    "display": "flex",
                                                    "flex-direction": "column"});
-//                $('.gridhandle').css({"cursor": "move", "margin-left": "10px"});
-//                var grid = GridStack.init({
+                $('.gridhandle').css({"cursor": "move", "margin-left": "10px"});
+                var grid = GridStack.init({
 //                    alwaysShowResizeHandle: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
 //                    resizable: {
 //                        handles: 'e, se, s, sw, w'
 //                    },
-//                     cellHeight: {{gridstack_conf.defaultCellHeight}},
-//                     width: {{gridstack_conf.maxColumns}},
-//                     verticalMargin: {{gridstack_conf.cellMargin}},
+////                     cellHeight: {{gridstack_conf.defaultCellHeight}},
+////                     width: {{gridstack_conf.maxColumns}},
+////                     verticalMargin: {{gridstack_conf.cellMargin}},
 //                    cellHeight: 2,
 //                    cellWidth: 4,
-//                    width: 12,
-//                    draggable: {
-////                            handle: '.gridhandle'
-//                        handle: '.grid-stack-item-content'
-//                    }
-//                });
-                $('.grid-stack')[0].gridstack({
-                    alwaysShowResizeHandle: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
-                    resizable: {
-                        handles: 'e, se, s, sw, w'
-                    },
-//                         cellHeight: {{gridstack_conf.defaultCellHeight}},
-//                         width: {{gridstack_conf.maxColumns}},
-//                         verticalMargin: {{gridstack_conf.cellMargin}},
+//                    column: 12,
                     draggable: {
                         handle: '.gridhandle'
                     }
-                }).on('resizestop', function(event, elem) {
-                    resize_workaround();
                 });
+//                $('.grid-stack').on('resizestop', function(event, elem) {
+//                    resize_workaround();
+//                });
+//                $('.grid-stack').gridstack({
+//                    alwaysShowResizeHandle: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
+//                    resizable: {
+//                        handles: 'e, se, s, sw, w'
+//                    },
+////                         cellHeight: {{gridstack_conf.defaultCellHeight}},
+////                         width: {{gridstack_conf.maxColumns}},
+////                         verticalMargin: {{gridstack_conf.cellMargin}},
+//                    draggable: {
+//                        handle: '.gridhandle'
+//                    }
+//                }).on('resizestop', function(event, elem) {
+//                    resize_workaround();
+//                });
             });
-            Jupyter.notebook.execute_all_cells();
-
         }
 
         var open_voila_dashboard = function() {
