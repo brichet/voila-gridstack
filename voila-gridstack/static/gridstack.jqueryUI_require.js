@@ -51,7 +51,10 @@ require(['jquery', 'nbextensions/voila-gridstack/gridstack'], function($, _) {
           (this.grid.opts.draggable.containment || null),
         start: opts.start || function() {},
         stop: opts.stop || function() {},
-        drag: opts.drag || function() {}
+        drag: opts.drag || function() {},
+        // Add helper != 'original' to prevent JQueryUI to add style="position: relative;" to draggable object, in this
+        // case the class '.grid-stack-item', style which is not suitable to grid layout
+        helper: 'gridstack'
       }));
     }
     return this;

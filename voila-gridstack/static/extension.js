@@ -43,7 +43,8 @@ define(['jquery',
 //                scr  = document.createElement('script');
 //                scr.src = 'https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.jQueryUI.min.js';
 //                head.insertBefore(scr, head.firstChild);
-//                $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', 'https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.min.css') );
+                $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', 'https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.min.css') );
+                $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', 'nbextensions/voila-gridstack/voila-gridstack.css') );
 //                $('head').append( $('<script id=script_gridstack />').attr('src', 'https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.all.js') );
 //                $('head').append( $('<script id=script_gridstack_jqueryUI />').attr('src', 'https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.jQueryUI.min.js') );
 
@@ -63,25 +64,25 @@ define(['jquery',
                         <i class=" fa fa-arrows"></i>
                     </div>
                 `)
-                $('.grid-stack-item-content').wrap("<div class='grid-stack-item' data-gs-autoPosition=true></div>");
-//                    $('.grid-stack-item').wrap("<div class='grid-stack'></div>");
-                $('#notebook-container').addClass('grid-stack');
+                $('.grid-stack-item-content').wrap("<div class='grid-stack-item' data-gs-auto-position='true' data-gs-width='12' data-gs-height='2'></div>");
+                $('.grid-stack-item').wrapAll("<div class='grid-stack'></div>");
+
                 $('.grid-stack-item-content').css({"background": "var(--jp-layout-color0)",
                                                    "color": "var(--jp-ui-font-color1)",
                                                    "display": "flex",
                                                    "flex-direction": "column"});
+                $('.grid-stack').css({"background-color": "var(--jp-layout-color3"});
+
                 $('.gridhandle').css({"cursor": "move", "margin-left": "10px"});
                 var grid = GridStack.init({
-//                    alwaysShowResizeHandle: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
-//                    resizable: {
-//                        handles: 'e, se, s, sw, w'
-//                    },
-////                     cellHeight: {{gridstack_conf.defaultCellHeight}},
-////                     width: {{gridstack_conf.maxColumns}},
-////                     verticalMargin: {{gridstack_conf.cellMargin}},
-//                    cellHeight: 2,
-//                    cellWidth: 4,
-//                    column: 12,
+                    alwaysShowResizeHandle: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
+                    resizable: {
+                        handles: 'e, se, s, sw, w'
+                    },
+//                     cellHeight: {{gridstack_conf.defaultCellHeight}},
+//                     width: {{gridstack_conf.maxColumns}},
+//                     verticalMargin: {{gridstack_conf.cellMargin}},
+                    column: 12,
                     draggable: {
                         handle: '.gridhandle'
                     }

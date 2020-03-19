@@ -6,8 +6,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
 
-{#<script src="https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.all.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.jQueryUI.min.js"></script>#}
+<script src="https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.all.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gridstack@0.5.2/dist/gridstack.jQueryUI.min.js"></script>
 <script type="text/javascript">
 
     // bqplot doesn't resize when resizing the tile, fix: fake a resize event
@@ -15,7 +15,7 @@
         window.dispatchEvent(new Event('resize'));
     }, 100)
     $(function () {
-        /*$('.grid-stack').gridstack({
+        $('.grid-stack').gridstack({
             alwaysShowResizeHandle: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
             {% if resources.gridstack.show_handles %}
             resizable: {
@@ -40,7 +40,7 @@
             }
         }).on('resizestop', function(event, elem) {
             resize_workaround()
-        });*/
+        });
         $('.grid-stack').show();
     });
 </script>
