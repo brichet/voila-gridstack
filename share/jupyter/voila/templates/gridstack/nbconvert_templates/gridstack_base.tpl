@@ -49,6 +49,9 @@ a.anchor-link {
 .highlight  {
   margin: 0.4em;
 }
+body {
+  overflow: scroll;
+}
 </style>
 
 {% endblock html_head_css %}
@@ -61,25 +64,3 @@ a.anchor-link {
 {% endif %}
 {% endblock body_header %}
 
-{% block footer_js %}
-{{ super() }}
-<script>
-{% if resources.gridstack.extension %}
-requirejs.config({ baseUrl: '{{resources.base_url}}voila/', waitSeconds: 30,
-                   paths: { gridstack: '../gridstack',
-                          },
-});
-requirejs(
-    [
-        "gridstack/static/save_grid",
-    ]
-);
-{% else %}
-requirejs(
-    [
-        "static/save_grid",
-    ]
-);
-{% endif %}
-</script>
-{% endblock footer_js %}
