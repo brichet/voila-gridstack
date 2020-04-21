@@ -49,6 +49,9 @@ a.anchor-link {
 .highlight  {
   margin: 0.4em;
 }
+body {
+  overflow: scroll;
+}
 </style>
 
 {% endblock html_head_css %}
@@ -60,3 +63,4 @@ a.anchor-link {
 <body class="theme-light" data-base-url="{{resources.base_url}}voila/">
 {% endif %}
 {% endblock body_header %}
+
